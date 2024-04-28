@@ -1,0 +1,27 @@
+{% extends 'app/base_app.html' %}
+
+{% block content %}
+{% load static %}
+       
+
+       
+
+        <center><td>
+                <a class="btn btn-default" href="{% url 'listar_agenda' %}">
+                        <button type="button" class="btn btn-secondary btn-lg">Agenda</button>
+                </a>
+                <a class="btn btn-default" href="{% url 'listar_clientes' %}">
+                        <button type="button" class="btn btn-secondary btn-lg">Cliente</button>
+                </a>
+                <a class="btn btn-default" href="{% url 'listar_especialidades' %}">
+                        <button type="button" class="btn btn-secondary btn-lg">Especialidades</button>
+                </a>
+                <a class="btn btn-default" href="{% url 'listar_prestadores' %}">
+                        <button type="button" class="btn btn-secondary btn-lg">Prestadores de Serviço</button>
+                </a>
+                
+        </td>
+        </center>>
+        
+{% endblock %}
+

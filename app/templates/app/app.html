@@ -1,0 +1,10 @@
+{% extends "app/base_app.html" %}
+
+{% block content %}
+<h3>TODO Lists</h3>
+<ul>
+    {% for list in user.lists.all %}
+    <li><a href="{% url 'todo_list' list.id %}">{{ list.title }}</a></li>
+    {% endfor %}
+</ul>
+{% endblock %}

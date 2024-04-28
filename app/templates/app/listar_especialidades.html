@@ -1,0 +1,23 @@
+{% extends 'app/base_app.html' %}
+
+{% block content %}
+{% load static %}
+{% if user.is_authenticated %}
+        <h3>Olá {{user.username}}</h3>
+    {% else %}
+        <p>Você precisa realizar o login</p>
+    {% endif %}
+
+    {% if user.is_superuser %}
+                <td>
+                    <a class="btn btn-default" href="{% url 'cadastrar_especialidade' %}">
+        
+                        <button type="button" class="btn btn-secondary btn-lg">Cadastrar Especialidade</button>
+                    </a>
+                </td>
+                {% endif %}
+        {% for especialidade in especialidades %}
+        
+            {{especialidade.nome}}   <br>
+        {% endfor %} 
+{% endblock %}

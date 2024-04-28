@@ -1,0 +1,36 @@
+{% extends 'app/base_app.html' %}
+
+{% block content %}
+    {% load static %}
+
+    {% if user.is_authenticated %}
+        <h3>Seja bem-vindo(a), {{ user.username }}</h3>
+
+        {% if user.is_superuser %}
+            <a class="btn btn-default" href="{% url 'cadastrar_agenda' %}">
+                <button type="button" class="btn btn-secondary btn-lg">Cadastrar Agenda</button>
+            </a>
+        {% endif %}
+
+        <a class="btn btn-default" href="{% url 'cadastrar_atendimento' %}">
+            <button type="button" class="btn btn-secondary btn-lg">Marcar Atendimento</button>
+        </a>
+
+        <h3>Agenda</h3>
+        {% for agenda in agendas %}
+            {{ agenda.prestador }}
+            <br>
+            {{ agenda.data }}
+            <br>
+        {% endfor %}
+
+        <h3>Atendimentos já Marcados</h3>
+        {% for atendimento in atendimentos %}
+            Cliente: {{ atendimento.cliente }}, Prestador: {{ atendimento.agendas.prestador }}, Data: {{ atendimento.agendas.data }}
+            <br>
+        {% endfor %}
+
+    {% else %}
+        <p>Você precisa realizar o login</p>
+    {% endif %}
+{% endblock %}

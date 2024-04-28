@@ -1,0 +1,17 @@
+{% extends 'app/base_app.html' %}
+
+{% block content %}
+
+        <h3>Prestador</h3>
+        
+        Nome: {{ prestador.nome }}<br/>
+        {% if user.is_superuser %}
+        E-mail: {{ prestador.email }}<br/>
+        Telefone: {{ prestador.telefone }}<br/>
+        {% endif %}
+        Especialidade: {{ prestador.especialidade }}<br/>
+
+        <br/>
+          
+{% endblock %}
+

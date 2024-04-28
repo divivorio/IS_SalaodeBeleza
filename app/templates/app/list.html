@@ -1,0 +1,24 @@
+{% extends "app/base_app.html" %}
+
+{% block content %}
+<h3>{{ list.title }}</h3>
+<ul>
+    {% for item in list.items.all %}
+    <li>
+        <span {% if item.done %}
+              style="text-decoration-line: line-through"
+        {% endif %}
+        >{{ item.title }}</span>
+        (<a href="{% url 'remove_item' list.id item.id %}">Remover</a>)
+        (<a href="{% url 'done_item' list.id item.id %}">Concluída</a>)
+    </li>
+    {% endfor %}
+</ul>
+
+<h3>Add Item:</h3>
+<form method="post" action="{% url 'add_item' list.id %}">
+    {% csrf_token %}
+    <input type="text" name="item_title"><br/>
+    <input type="submit">
+</form>
+{% endblock %}
